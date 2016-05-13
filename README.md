@@ -1,9 +1,11 @@
 # React Audio Player
 This is a light React wrapper around the HTML5 audio tag.  It provides the ability to manipulate the player and listen to events through a nice React interface.
 
+# if you find the error about 'this.refs', you can copy the content of src/index.jsx and paste on your poject building!!!
+
 ## Installation
 
-    npm install --save react-audio-player
+    npm install react-audio-player --save
 
 ## Usage
 
