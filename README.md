@@ -54,7 +54,7 @@ Indicates whether the browser should preload the media. See the [audio tag docum
 You can get direct access to the underlying audio element.  First get a ref to ReactAudioPlayer:
 
     <ReactAudioPlayer
-      ref={c => { this.rap = c }
+      ref={c => { this.rap = c }}
     />
 
 Then you can access the audio element like this:
