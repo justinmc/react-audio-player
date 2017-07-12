@@ -32,6 +32,8 @@ See the [audio tag documentation](https://developer.mozilla.org/en-US/docs/Web/H
 
 #### controls {Bool} [false]
 
+#### controlsList {String} ['']
+
 #### loop {Bool} [false]
 
 #### muted {Bool} [false]
