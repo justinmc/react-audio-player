@@ -28,7 +28,8 @@
     "react-dom": ">=16"
   },
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-hot-loader": "^4.8.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -49,7 +50,6 @@
     "karma-webpack": "^3.0.5",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-hot-loader": "^4.8.4",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.3.1"
