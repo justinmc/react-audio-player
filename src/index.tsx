@@ -210,6 +210,7 @@ class ReactAudioPlayer extends Component<ReactAudioPlayerProps> {
         src={this.props.src}
         style={this.props.style}
         title={title}
+        {...this.props}
         {...conditionalProps}
       >
         {incompatibilityMessage}
