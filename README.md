@@ -62,14 +62,53 @@ Prop | Type | Description
 ## Advanced Usage
 
 ### Access to the audio element
-You can get direct access to the underlying audio element.  First get a ref to ReactAudioPlayer:
+You can get direct access to the underlying audio element. First get a ref to ReactAudioPlayer with useRef():
 
-    <ReactAudioPlayer
-      ref={(element) => { this.rap = element; }}
-    />
+    const audioPlayerRef = useRef<ReactAudioPlayer>(null)
 
 Then you can access the audio element like this:
 
-    this.rap.audioEl
+    <ReactAudioPlayer
+      src={url}
+      ref={audioPlayerRef}
+    />
 
-This is especially useful if you need access to read-only attributes of the audio tag such as `buffered` and `played`.  See the [audio tag documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) for more on these attributes.
+This is especially useful if you need access to read-only attributes of the audio tag such as `buffered` and `played`. See the [audio tag documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) for more on these attributes.
+
+You can also use this to create custom controls such as play, pause, or stop buttons, like this:
+
+    const [isPlaying, setIsPlaying] = useState(autoPlay)
+
+    const playAudio = () => {
+      if (audioPlayerRef.current) {
+        audioPlayerRef.current.audioEl.current?.play()
+        setIsPlaying(true)
+      }
+    }
+
+    const pauseAudio = () => {
+      if (audioPlayerRef.current) {
+        audioPlayerRef.current.audioEl.current?.pause()
+        setIsPlaying(false)
+      }
+    }
+    
+    const stopAudio = () => {
+      if (audioPlayerRef.current) {
+        audioPlayerRef.current.audioEl.current?.pause()
+        audioPlayerRef.current.audioEl.current.currentTime = 0
+        setIsPlaying(false)
+      }
+    }
+
+    return (
+      <div>
+        <ReactAudioPlayer
+          src={url}
+          ref={audioPlayerRef}
+        />
+        <button onClick={playAudio}>Play</button>
+        <button onClick={pauseAudio}>Pause</button>
+        <button onClick={stopAudio}>Stop</button>
+      </div>
+    )
