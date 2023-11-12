@@ -75,7 +75,7 @@ Then you can access the audio element like this:
 
 This is especially useful if you need access to read-only attributes of the audio tag such as `buffered` and `played`. See the [audio tag documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) for more on these attributes.
 
-You can also use this to create custom controls such as a play or pause button, like this:
+You can also use this to create custom controls such as play, pause, or stop buttons, like this:
 
     const [isPlaying, setIsPlaying] = useState(autoPlay)
 
@@ -92,6 +92,14 @@ You can also use this to create custom controls such as a play or pause button, 
         setIsPlaying(false)
       }
     }
+    
+    const stopAudio = () => {
+      if (audioPlayerRef.current) {
+        audioPlayerRef.current.audioEl.current?.pause()
+        audioPlayerRef.current.audioEl.current.currentTime = 0
+        setIsPlaying(false)
+      }
+    }
 
     return (
       <div>
@@ -99,7 +107,8 @@ You can also use this to create custom controls such as a play or pause button, 
           src={url}
           ref={audioPlayerRef}
         />
-        <button onClick={playAudio}/>
-        <button onClick={pauseAudio}/>
+        <button onClick={playAudio}>Play</button>
+        <button onClick={pauseAudio}>Pause</button>
+        <button onClick={stopAudio}>Stop</button>
       </div>
     )
